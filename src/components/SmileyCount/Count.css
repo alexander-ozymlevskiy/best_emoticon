@@ -1,0 +1,18 @@
+.smiley-container {
+    display: inline-block;
+    text-align: center;
+    margin: 0 10px;
+  }
+  
+  .counter {
+    margin-top: 10px;
+  }
+  
+  .btn{
+    text-align: center;
+    margin-top: 20px;
+    color: rgb(255, 255, 255);
+    background-color: blue;
+    padding: 10px;
+  }
+  

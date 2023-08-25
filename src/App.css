@@ -1,5 +1,30 @@
 .App {
-  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.smiley {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  font-size: 30px;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  color: #636363;
+  padding: 5px;
+}
+
+* {
+  background-color: #96fdff;
+}
+
+.container {
+ display: flex;
+ justify-content: center;
+ margin-top: 50px;
 }
 
 .App-logo {
