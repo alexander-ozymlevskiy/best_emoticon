@@ -3,18 +3,21 @@ import "./App.css";
 import SmileyCount from "./components/SmileyCount";
 import ShowResultButton from "./components/ShowResultButton";
 
-const emojis = ["😀", "😁", "😂", "🤣", "😃"];  // Масив смайликів
+const emojis = ["😀", "😁", "😂", "🤣", "😃"];
 
 function App() {
-  const [votes, setVotes] = useState({}); // Стан для збереження голосів
+  const [votes, setVotes] = useState({});
+  const [showResult, setShowResult] = useState(false);
 
-  // Функція для оновлення голосів після кліку на смайлик
-  const handleVote = (emoji, newCount) => {
+  const updateVoteCount = (emoji, newCount) => {
     setVotes(prevVotes => ({ ...prevVotes, [emoji]: newCount }));
-  };  
+  };
 
-  // Функція для визначення смайлика з найбільшою кількістю голосів
-  const showResult = () => {
+  const onShowResultClick = () => {
+    setShowResult(true);
+  };
+
+  const calculateWinner = () => {
     const emojisWithVotes = emojis.filter(emoji => votes[emoji] > 0); 
     const sortedEmojis = emojisWithVotes.sort((a, b) => votes[b] - votes[a]);  
     const maxVotesEmoji = sortedEmojis[0];
@@ -27,11 +30,12 @@ function App() {
       <h1 className="header">Голосування за найкращий смайлик</h1>
       <div className="smiley">
         {emojis.map((emoji, x) => (
-          <SmileyCount key={x} emoji={emoji} onVote={handleVote} />
+          <SmileyCount key={x} emoji={emoji} onVote={updateVoteCount} />
         ))}
       </div>
       <div className="button-container">
-        <ShowResultButton winner={showResult()} />
+        <ShowResultButton onShowResultClick={onShowResultClick} />
+        {showResult && <p>Переможець: {calculateWinner()}</p>}
       </div>
     </div>
   );

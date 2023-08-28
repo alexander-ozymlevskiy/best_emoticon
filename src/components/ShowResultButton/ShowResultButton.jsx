@@ -1,20 +1,10 @@
 import React from "react";
 import "./Button.css";
 
-// Оголошуємо компонент ShowResultButton з пропсом winner
-function ShowResultButton({ winner }) {
-  // Функція, яка спрацьовує при кліку на кнопку
-  const showResultClick = () => {
-    if (winner) {
-      alert(`Переможець: ${winner}`);
-    } else {
-      alert("Поки немає голосів");
-    }
-  };
-
+function ShowResultButton({ onShowResultClick }) {
   return (
     <div>
-      <button className="showResultBtn" onClick={showResultClick}>
+      <button className="showResultBtn" onClick={onShowResultClick}>
         Показати результат
       </button>
     </div>
